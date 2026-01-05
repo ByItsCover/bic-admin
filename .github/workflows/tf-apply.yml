@@ -44,7 +44,7 @@ jobs:
 
       - name: Terraform Apply
         run: |
-          terraform apply \
+          terraform apply -auto-approve \
             -var="tfc_org_email=${{ secrets.TFC_ORG_EMAIL }}" \
             -var="tfc_aws_plan_role=${{ secrets.TFC_AWS_PLAN_ROLE_ARN }}" \
             -var="tfc_aws_apply_role=${{ secrets.TFC_AWS_APPLY_ROLE_ARN }}"
