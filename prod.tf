@@ -1,3 +1,4 @@
+/*
 resource "tfe_project" "bic_prod" {
   organization = var.tfe_org_name
   name         = "ByItsCover_PROD"
@@ -28,3 +29,4 @@ resource "tfe_variable" "aws_apply_role" {
   category     = "env"
   workspace_id = tfe_workspace.bic_prod_infra.id
 }
+*/
