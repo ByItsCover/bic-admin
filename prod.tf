@@ -1,11 +1,11 @@
 resource "tfe_project" "bic_prod" {
-  organization = tfe_organization.bic.name
+  organization = var.tfe_org_name
   name         = "ByItsCover_PROD"
 }
 
 resource "tfe_workspace" "bic_prod_infra" {
   name         = "bic-infra-prod"
-  organization = tfe_organization.bic.name
+  organization = var.tfe_org_name
 }
 
 resource "tfe_variable" "aws_auth" {
