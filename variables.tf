@@ -1,7 +1,7 @@
-variable "tfc_org_email" {
+variable "tfe_org_name" {
   type        = string
-  sensitive     = true
-  description = "Terraform Cloud Organization Email"
+  description = "Terraform Cloud organization name"
+  default     = "ByItsCover"
 }
 
 variable "tfc_aws_auth" {
