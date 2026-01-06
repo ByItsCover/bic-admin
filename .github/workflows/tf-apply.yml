@@ -21,6 +21,7 @@ jobs:
     env:
       ENVIRONMENT: prod
       TF_CLOUD_PROJECT: ByItsCover_PROD
+      TFE_TOKEN: ${{ secrets.TF_API_TOKEN }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -45,6 +46,6 @@ jobs:
 
       - name: Terraform Apply
         run: |
-          terraform apply -auto-approve \
+          terraform apply \
             -var="tfc_aws_plan_role=${{ secrets.TFC_AWS_PLAN_ROLE_ARN }}" \
             -var="tfc_aws_apply_role=${{ secrets.TFC_AWS_APPLY_ROLE_ARN }}"

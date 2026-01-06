@@ -21,6 +21,7 @@ jobs:
     env:
       ENVIRONMENT: prod
       TF_CLOUD_PROJECT: ByItsCover_PROD
+      TFE_TOKEN: ${{ secrets.TF_API_TOKEN }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
