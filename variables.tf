@@ -23,7 +23,7 @@ variable "tfc_aws_apply_role" {
 }
 
 variable "tfc_token" {
-  type = string
+  type        = string
   sensitive   = true
   description = "Terraform Cloud User API Token"
 }
