@@ -17,7 +17,15 @@ resource "tfe_workspace" "bic_prod_embed_server" {
   project_id   = tfe_project.bic_prod.id
 }
 
-# Variable Set
+# Remote Access
+
+resource "tfe_workspace_settings" "infra_access" {
+  workspace_id              = tfe_workspace.bic_prod_infra.id
+  global_remote_state       = false
+  remote_state_consumer_ids = toset([tfe_workspace.bic_prod_embed_server.id])
+}
+
+# Environment Variables
 
 resource "tfe_project_variable_set" "bic_prod_vars" {
   project_id      = tfe_project.bic_prod.id
