@@ -20,8 +20,8 @@ resource "tfe_workspace" "bic_prod_embed_server" {
 # Variable Set
 
 resource "tfe_project_variable_set" "bic_prod_vars" {
-  project_id      = tfe_project.test.id
-  variable_set_id = tfe_variable_set.test.id
+  project_id      = tfe_project.bic_prod.id
+  variable_set_id = tfe_variable_set.aws_credentials.id
 }
 
 resource "tfe_variable_set" "aws_credentials" {
@@ -32,24 +32,24 @@ resource "tfe_variable_set" "aws_credentials" {
 }
 
 resource "tfe_variable" "aws_auth" {
-  key          = "TFC_AWS_PROVIDER_AUTH"
-  value        = var.tfc_aws_auth
-  category     = "env"
+  key             = "TFC_AWS_PROVIDER_AUTH"
+  value           = var.tfc_aws_auth
+  category        = "env"
   variable_set_id = tfe_variable_set.aws_credentials.id
 }
 
 resource "tfe_variable" "aws_plan_role" {
-  key          = "TFC_AWS_PLAN_ROLE_ARN"
-  value        = var.tfc_aws_plan_role
-  category     = "env"
-  sensitive    = true
+  key             = "TFC_AWS_PLAN_ROLE_ARN"
+  value           = var.tfc_aws_plan_role
+  category        = "env"
+  sensitive       = true
   variable_set_id = tfe_variable_set.aws_credentials.id
 }
 
 resource "tfe_variable" "aws_apply_role" {
-  key          = "TFC_AWS_APPLY_ROLE_ARN"
-  value        = var.tfc_aws_apply_role
-  category     = "env"
-  sensitive    = true
+  key             = "TFC_AWS_APPLY_ROLE_ARN"
+  value           = var.tfc_aws_apply_role
+  category        = "env"
+  sensitive       = true
   variable_set_id = tfe_variable_set.aws_credentials.id
 }
