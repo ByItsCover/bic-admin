@@ -17,12 +17,21 @@ resource "tfe_workspace" "bic_prod_embed_server" {
   project_id   = tfe_project.bic_prod.id
 }
 
+resource "tfe_workspace" "bic_prod_listopia_parser" {
+  name         = "bic-listopia-parser-prod"
+  organization = var.tfe_org_name
+  project_id   = tfe_project.bic_prod.id
+}
+
 # Remote Access
 
 resource "tfe_workspace_settings" "infra_access" {
-  workspace_id              = tfe_workspace.bic_prod_infra.id
-  global_remote_state       = false
-  remote_state_consumer_ids = toset([tfe_workspace.bic_prod_embed_server.id])
+  workspace_id        = tfe_workspace.bic_prod_infra.id
+  global_remote_state = false
+  remote_state_consumer_ids = toset([
+    tfe_workspace.bic_prod_embed_server.id,
+    tfe_workspace.bic_prod_listopia_parser.id
+  ])
 }
 
 # Environment Variables
