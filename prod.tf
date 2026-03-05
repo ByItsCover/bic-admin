@@ -23,6 +23,12 @@ resource "tfe_workspace" "bic_prod_listopia_parser" {
   project_id   = tfe_project.bic_prod.id
 }
 
+resource "tfe_workspace" "bic_prod_library_search" {
+  name         = "bic-library-search-prod"
+  organization = var.tfe_org_name
+  project_id   = tfe_project.bic_prod.id
+}
+
 # Remote Access
 
 resource "tfe_workspace_settings" "infra_access" {
@@ -30,7 +36,8 @@ resource "tfe_workspace_settings" "infra_access" {
   global_remote_state = false
   remote_state_consumer_ids = toset([
     tfe_workspace.bic_prod_embed_server.id,
-    tfe_workspace.bic_prod_listopia_parser.id
+    tfe_workspace.bic_prod_listopia_parser.id,
+    tfe_workspace.bic_prod_library_search.id
   ])
 }
 
