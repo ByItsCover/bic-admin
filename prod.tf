@@ -43,7 +43,8 @@ resource "tfe_workspace_settings" "infra_access" {
   remote_state_consumer_ids = toset([
     tfe_workspace.bic_prod_embed_server.id,
     tfe_workspace.bic_prod_listopia_parser.id,
-    tfe_workspace.bic_prod_library_search.id
+    tfe_workspace.bic_prod_library_search.id,
+    tfe_workspace.bic_prod_site.id
   ])
 }
 
