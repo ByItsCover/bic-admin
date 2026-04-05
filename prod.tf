@@ -48,6 +48,14 @@ resource "tfe_workspace_settings" "infra_access" {
   ])
 }
 
+resource "tfe_workspace_settings" "library_search_access" {
+  workspace_id        = tfe_workspace.bic_prod_library_search.id
+  global_remote_state = false
+  remote_state_consumer_ids = toset([
+    tfe_workspace.bic_prod_site.id
+  ])
+}
+
 # Environment Variables
 
 resource "tfe_project_variable_set" "bic_prod_vars" {
