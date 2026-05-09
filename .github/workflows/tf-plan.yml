@@ -34,7 +34,7 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Render Terraform Docs
-        uses: terraform-docs/gh-actions@1.4.1
+        uses: terraform-docs/gh-actions@v1.4.1
         with:
           working-dir: .
           output-file: README.md
