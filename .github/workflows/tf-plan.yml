@@ -37,14 +37,6 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-      - name: Render Terraform Docs
-        uses: terraform-docs/gh-actions@v1.4.1
-        with:
-          working-dir: .
-          output-file: README.md
-          output-method: inject
-          git-push: "true"
-
       # Runs a set of terraform commands using the runners shell
       - name: Terraform Init
         run: terraform init
@@ -54,6 +46,14 @@ jobs:
           terraform fmt -recursive
           terraform validate
         continue-on-error: false
+
+      - name: Render Terraform Docs
+        uses: terraform-docs/gh-actions@v1.4.1
+        with:
+          working-dir: .
+          output-file: README.md
+          output-method: inject
+          git-push: "true"
 
       - name: Terraform Plan
         run: |
