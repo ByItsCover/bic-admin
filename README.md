@@ -13,7 +13,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | n/a |
+| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | 0.76.2 |
 
 ## Modules
 
