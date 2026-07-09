@@ -29,6 +29,12 @@ resource "tfe_workspace" "bic_prod_library_search" {
   project_id   = tfe_project.bic_prod.id
 }
 
+resource "tfe_workspace" "bic_prod_suggest" {
+  name         = "bic-suggest-prod"
+  organization = var.tfe_org_name
+  project_id   = tfe_project.bic_prod.id
+}
+
 resource "tfe_workspace" "bic_prod_site" {
   name         = "bic-site-prod"
   organization = var.tfe_org_name
@@ -44,12 +50,21 @@ resource "tfe_workspace_settings" "infra_access" {
     tfe_workspace.bic_prod_embed_server.id,
     tfe_workspace.bic_prod_listopia_parser.id,
     tfe_workspace.bic_prod_library_search.id,
+    tfe_workspace.bic_prod_suggest.id,
     tfe_workspace.bic_prod_site.id
   ])
 }
 
 resource "tfe_workspace_settings" "library_search_access" {
   workspace_id        = tfe_workspace.bic_prod_library_search.id
+  global_remote_state = false
+  remote_state_consumer_ids = toset([
+    tfe_workspace.bic_prod_site.id
+  ])
+}
+
+resource "tfe_workspace_settings" "suggest_access" {
+  workspace_id        = tfe_workspace.bic_prod_suggest.id
   global_remote_state = false
   remote_state_consumer_ids = toset([
     tfe_workspace.bic_prod_site.id
