@@ -35,6 +35,12 @@ resource "tfe_workspace" "bic_prod_suggest" {
   project_id   = tfe_project.bic_prod.id
 }
 
+resource "tfe_workspace" "bic_prod_learn" {
+  name         = "bic-learn-prod"
+  organization = var.tfe_org_name
+  project_id   = tfe_project.bic_prod.id
+}
+
 resource "tfe_workspace" "bic_prod_site" {
   name         = "bic-site-prod"
   organization = var.tfe_org_name
@@ -51,6 +57,7 @@ resource "tfe_workspace_settings" "infra_access" {
     tfe_workspace.bic_prod_listopia_parser.id,
     tfe_workspace.bic_prod_library_search.id,
     tfe_workspace.bic_prod_suggest.id,
+    tfe_workspace.bic_prod_learn.id,
     tfe_workspace.bic_prod_site.id
   ])
 }
