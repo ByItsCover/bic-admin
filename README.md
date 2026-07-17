@@ -13,7 +13,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | 0.78.0 |
+| <a name="provider_tfe"></a> [tfe](#provider\_tfe) | 0.79.0 |
 
 ## Modules
 
@@ -31,6 +31,7 @@ No modules.
 | [tfe_variable_set.aws_credentials](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/variable_set) | resource |
 | [tfe_workspace.bic_prod_embed_server](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace) | resource |
 | [tfe_workspace.bic_prod_infra](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace) | resource |
+| [tfe_workspace.bic_prod_learn](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace) | resource |
 | [tfe_workspace.bic_prod_library_search](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace) | resource |
 | [tfe_workspace.bic_prod_listopia_parser](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace) | resource |
 | [tfe_workspace.bic_prod_site](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/workspace) | resource |
